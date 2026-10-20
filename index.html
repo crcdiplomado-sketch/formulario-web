@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario LTN Final</title>
+    <style>
+        /* Estilos generales de la página (Fondo oscuro) */
+        body {
+            background-color: #060913;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Contenedor principal con borde brillante (Efecto Neón) */
+        .form-container {
+            background-color: #0b1120;
+            border: 2px solid #00f0ff;
+            border-radius: 14px;
+            padding: 35px;
+            width: 460px;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* Título principal en color fucsia */
+        h2 {
+            color: #ff007f;
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Subtítulo de fecha */
+        .subtitle {
+            color: #fde047;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Caja de aviso legal o confidencialidad */
+        .alert-box {
+            background-color: #121a2d;
+            border: 1px dashed #223a5e;
+            padding: 10px 14px;
+            font-size: 11px;
+            color: #94a3b8;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        /* Campo de entrada de texto */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 13px;
+            background-color: #05070d;
+            border: 1px solid #1e3a8a;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 13px;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: #64748b;
+        }
+
+        /* Efecto al hacer clic dentro del input */
+        input[type="text"]:focus {
+            border-color: #00f0ff;
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+        }
+
+        /* Contenedor de botones */
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Botón de búsqueda (Cian) */
+        .btn-search {
+            flex: 1.2;
+            background-color: #00f0ff;
+            color: #05070d;
+            border: none;
+            padding: 12px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-search:hover {
+            background-color: #00c4d1;
+        }
+
+        /* Botón de nueva consulta (Fucsia/Rosa) */
+        .btn-reset {
+            flex: 1;
+            background-color: #ff007f;
+            color: #ffffff;
+            border: none;
+            padding: 12px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-reset:hover {
+            background-color: #d9006b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>FORMULARIO LTN FINAL</h2>
+        <div class="subtitle">Inicia: Octubre 17 de 2026</div>
+        
+        <div class="alert-box">
+            🔒 Sus datos están protegidos bajo estrictas normas de confidencialidad y estándares internos de cifrado. No compartimos su información con terceros.
+        </div>
+        
+        <div class="input-group">
+            <input type="text" placeholder="DIGITE DOCUMENTO DE IDENTIDAD (SIN PUNTOS)">
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-search">BUSCAR DOCUMENTO</button>
+            <button class="btn-reset">NUEVA CONSULTA</button>
+        </div>
+    </div>
+
+</body>
+</html>
