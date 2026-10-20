@@ -144,56 +144,61 @@
         
         <form id="academicForm">
             <div class="form-group">
-                <label>Nombre Completo (Apellidos y Nombres)</label>
+                <label>Nombre Completo (Apellidos y Nombres) *</label>
                 <input type="text" id="nombre" required placeholder="Ej. Pérez Gómez, Juan Carlos">
             </div>
 
             <div class="form-group">
-                <label>Cédula de Identidad</label>
+                <label>Cédula de Identidad *</label>
                 <input type="text" id="cedula" required placeholder="Ej. V-12345678">
             </div>
 
             <div class="form-group">
-                <label>Edad</label>
+                <label>Edad *</label>
                 <input type="number" id="edad" min="15" max="90" required placeholder="Ej. 20">
             </div>
 
             <div class="form-group">
-                <label>Correo Electrónico</label>
+                <label>Correo Electrónico *</label>
                 <input type="email" id="correo" required placeholder="estudiante@ejemplo.com">
             </div>
 
             <div class="form-group">
-                <label>Lugar de Residencia</label>
+                <label>Lugar de Residencia *</label>
                 <input type="text" id="residencia" required placeholder="Ciudad, Estado / Dirección">
             </div>
 
             <div class="form-group">
-                <label>Número de Teléfono</label>
+                <label>Número de Teléfono *</label>
                 <input type="tel" id="telefono" required placeholder="0414-1234567">
             </div>
 
+            <!-- SECCIÓN DE SUBPROYECTOS: Puedes agregar o cambiar las opciones aquí -->
             <div class="form-group">
-                <label>Subproyecto que Cursa</label>
+                <label>Subproyecto que Cursa *</label>
                 <select id="subproyecto" required>
                     <option value="">-- Seleccionar Subproyecto --</option>
-                    <option value="Subproyecto A">Subproyecto A</option>
-                    <option value="Subproyecto B">Subproyecto B</option>
+                    <option value="Sistemas de Producción Animal I">Sistemas de Producción Animal I</option>
+                    <option value="Sistemas de Producción Animal II">Sistemas de Producción Animal II</option>
+                    <option value="Manejo de Sistemas de Producción Animal I">Manejo de Sistemas de Producción Animal I</option>
+                    <option value="Manejo de Sistemas de Producción Animal II">Manejo de Sistemas de producción Animal II</option>
                 </select>
             </div>
 
+            <!-- SECCIÓN DE SECCIONES: Puedes agregar o cambiar las opciones aquí -->
             <div class="form-group">
-                <label>Sección</label>
+                <label>Sección *</label>
                 <select id="seccion" required>
                     <option value="">-- Seleccionar Sección --</option>
-                    <option value="Sección 1">Sección 1</option>
-                    <option value="Sección 2">Sección 2</option>
+                    <option value="Sección D04">Sección D04</option>
+                    <option value="Sección D05">Sección D05</option>
+                    <option value="Sección D06">Sección D06</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Otra Información Importante</label>
-                <textarea id="info" rows="3" placeholder="Observaciones o notas adicionales..."></textarea>
+                <label>Otra Información Importante *</label>
+                <textarea id="info" rows="3" required placeholder="Indique observaciones o escriba 'Ninguna' si no posee..."></textarea>
             </div>
 
             <div class="button-group">
@@ -204,7 +209,7 @@
     </div>
 
     <script>
-        // PEGA AQUÍ ABAJO LA URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT:
+        // PEGA AQUÍ LA URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT:
         const URL_APLICACION = "https://script.google.com/macros/s/AKfycbylOKNYRfbdamlJA4wSmkoGXJPnC18QeqOtNk8plZLlJOz1HTFUl6mTMpQ8azkiTtI/exec";
 
         const formulario = document.getElementById('academicForm');
@@ -214,6 +219,12 @@
         formulario.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Verificación extra de seguridad para campos vacíos
+            if (!formulario.checkValidity()) {
+                formulario.reportValidity();
+                return;
+            }
+
             btnEnviar.disabled = true;
             btnEnviar.textContent = "ENVIANDO...";
 
@@ -231,7 +242,7 @@
 
             fetch(URL_APLICACION, {
                 method: "POST",
-                mode: "no-cors", // Necesario para evitar bloqueos cruzados con Google
+                mode: "no-cors",
                 headers: {
                     "Content-Type": "application/json"
                 },
