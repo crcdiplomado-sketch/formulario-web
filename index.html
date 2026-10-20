@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario LTN Final</title>
+    <title>Formulario de Datos Académicos</title>
     <style>
-        /* Estilos generales de la página (Fondo oscuro) */
         body {
             background-color: #060913;
             color: #ffffff;
@@ -13,60 +12,59 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding: 40px 20px;
             margin: 0;
         }
 
-        /* Contenedor principal con borde brillante (Efecto Neón) */
         .form-container {
             background-color: #0b1120;
             border: 2px solid #00f0ff;
             border-radius: 14px;
             padding: 35px;
-            width: 460px;
+            width: 100%;
+            max-width: 600px;
             box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
-            text-align: center;
             box-sizing: border-box;
         }
 
-        /* Título principal en color fucsia */
         h2 {
             color: #ff007f;
-            font-size: 22px;
+            font-size: 24px;
             margin-top: 0;
+            text-align: center;
             margin-bottom: 5px;
-            letter-spacing: 0.5px;
         }
 
-        /* Subtítulo de fecha */
         .subtitle {
             color: #fde047;
             font-size: 13px;
             font-weight: bold;
+            text-align: center;
             margin-bottom: 20px;
         }
 
-        /* Caja de aviso legal o confidencialidad */
-        .alert-box {
-            background-color: #121a2d;
-            border: 1px dashed #223a5e;
-            padding: 10px 14px;
-            font-size: 11px;
-            color: #94a3b8;
-            border-radius: 6px;
-            margin-bottom: 20px;
+        .form-group {
+            margin-bottom: 16px;
             text-align: left;
-            line-height: 1.4;
         }
 
-        /* Campo de entrada de texto */
-        .input-group {
-            margin-bottom: 20px;
+        label {
+            display: block;
+            font-size: 12px;
+            color: #00f0ff;
+            margin-bottom: 6px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
-        input[type="text"] {
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
             width: 100%;
-            padding: 13px;
+            padding: 11px;
             background-color: #05070d;
             border: 1px solid #1e3a8a;
             border-radius: 8px;
@@ -77,48 +75,41 @@
             transition: all 0.3s ease;
         }
 
-        input[type="text"]::placeholder {
-            color: #64748b;
-        }
-
-        /* Efecto al hacer clic dentro del input */
-        input[type="text"]:focus {
+        input:focus, select:focus, textarea:focus {
             border-color: #00f0ff;
             box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
         }
 
-        /* Contenedor de botones */
         .button-group {
             display: flex;
-            gap: 10px;
+            gap: 12px;
+            margin-top: 25px;
         }
 
-        /* Botón de búsqueda (Cian) */
-        .btn-search {
-            flex: 1.2;
+        .btn-submit {
+            flex: 2;
             background-color: #00f0ff;
             color: #05070d;
             border: none;
-            padding: 12px 10px;
-            font-size: 12px;
+            padding: 13px;
+            font-size: 13px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
             transition: background 0.3s;
         }
 
-        .btn-search:hover {
+        .btn-submit:hover {
             background-color: #00c4d1;
         }
 
-        /* Botón de nueva consulta (Fucsia/Rosa) */
         .btn-reset {
             flex: 1;
             background-color: #ff007f;
             color: #ffffff;
             border: none;
-            padding: 12px 10px;
-            font-size: 12px;
+            padding: 13px;
+            font-size: 13px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
@@ -128,27 +119,141 @@
         .btn-reset:hover {
             background-color: #d9006b;
         }
+
+        #mensaje-exito {
+            display: none;
+            background-color: #064e3b;
+            color: #34d399;
+            border: 1px solid #059669;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        <h2>FORMULARIO LTN FINAL</h2>
-        <div class="subtitle">Inicia: Octubre 17 de 2026</div>
+        <h2>REGISTRO DE DATOS ACADÉMICOS</h2>
+        <div class="subtitle">Control de Estudiantes</div>
+
+        <div id="mensaje-exito">¡Registro guardado con éxito! Los datos han sido enviados.</div>
         
-        <div class="alert-box">
-            🔒 Sus datos están protegidos bajo estrictas normas de confidencialidad y estándares internos de cifrado. No compartimos su información con terceros.
-        </div>
-        
-        <div class="input-group">
-            <input type="text" placeholder="DIGITE DOCUMENTO DE IDENTIDAD (SIN PUNTOS)">
-        </div>
-        
-        <div class="button-group">
-            <button class="btn-search">BUSCAR DOCUMENTO</button>
-            <button class="btn-reset">NUEVA CONSULTA</button>
-        </div>
+        <form id="academicForm">
+            <div class="form-group">
+                <label>Nombre Completo (Apellidos y Nombres)</label>
+                <input type="text" id="nombre" required placeholder="Ej. Pérez Gómez, Juan Carlos">
+            </div>
+
+            <div class="form-group">
+                <label>Cédula de Identidad</label>
+                <input type="text" id="cedula" required placeholder="Ej. V-12345678">
+            </div>
+
+            <div class="form-group">
+                <label>Edad</label>
+                <input type="number" id="edad" min="15" max="90" required placeholder="Ej. 20">
+            </div>
+
+            <div class="form-group">
+                <label>Correo Electrónico</label>
+                <input type="email" id="correo" required placeholder="estudiante@ejemplo.com">
+            </div>
+
+            <div class="form-group">
+                <label>Lugar de Residencia</label>
+                <input type="text" id="residencia" required placeholder="Ciudad, Estado / Dirección">
+            </div>
+
+            <div class="form-group">
+                <label>Número de Teléfono</label>
+                <input type="tel" id="telefono" required placeholder="0414-1234567">
+            </div>
+
+            <div class="form-group">
+                <label>Subproyecto que Cursa</label>
+                <select id="subproyecto" required>
+                    <option value="">-- Seleccionar Subproyecto --</option>
+                    <option value="Subproyecto A">Subproyecto A</option>
+                    <option value="Subproyecto B">Subproyecto B</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Sección</label>
+                <select id="seccion" required>
+                    <option value="">-- Seleccionar Sección --</option>
+                    <option value="Sección 1">Sección 1</option>
+                    <option value="Sección 2">Sección 2</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Otra Información Importante</label>
+                <textarea id="info" rows="3" placeholder="Observaciones o notas adicionales..."></textarea>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn-submit" id="btnEnviar">GUARDAR REGISTRO</button>
+                <button type="reset" class="btn-reset">LIMPIAR</button>
+            </div>
+        </form>
     </div>
 
+    <script>
+        // PEGA AQUÍ ABAJO LA URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT:
+        const URL_APLICACION = "https://script.google.com/macros/s/AKfycbylOKNYRfbdamlJA4wSmkoGXJPnC18QeqOtNk8plZLlJOz1HTFUl6mTMpQ8azkiTtI/exec";
+
+        const formulario = document.getElementById('academicForm');
+        const mensajeExito = document.getElementById('mensaje-exito');
+        const btnEnviar = document.getElementById('btnEnviar');
+
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            btnEnviar.disabled = true;
+            btnEnviar.textContent = "ENVIANDO...";
+
+            const datos = {
+                nombre: document.getElementById('nombre').value,
+                cedula: document.getElementById('cedula').value,
+                edad: document.getElementById('edad').value,
+                correo: document.getElementById('correo').value,
+                residencia: document.getElementById('residencia').value,
+                telefono: document.getElementById('telefono').value,
+                subproyecto: document.getElementById('subproyecto').value,
+                seccion: document.getElementById('seccion').value,
+                info: document.getElementById('info').value
+            };
+
+            fetch(URL_APLICACION, {
+                method: "POST",
+                mode: "no-cors", // Necesario para evitar bloqueos cruzados con Google
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datos)
+            })
+            .then(() => {
+                mensajeExito.style.display = "block";
+                formulario.reset();
+                btnEnviar.disabled = false;
+                btnEnviar.textContent = "GUARDAR REGISTRO";
+                
+                setTimeout(() => {
+                    mensajeExito.style.display = "none";
+                }, 5000);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("Hubo un error al enviar los datos. Inténtalo de nuevo.");
+                btnEnviar.disabled = false;
+                btnEnviar.textContent = "GUARDAR REGISTRO";
+            });
+        });
+    </script>
 </body>
 </html>
